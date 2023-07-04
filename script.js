@@ -35,10 +35,27 @@ const Tweeter = function () {
 
     const removePost = (postId) => posts = posts.filter(obj => obj.id !== postId)
 
+    const addComment = (comment, postId) => {
+        commentIdCounter += 1
+        let post = posts.filter(obj => obj.id == postId)
+        post[0].comments.push({
+            id: "c" + commentIdCounter,
+            text: comment
+        })
+
+    }
+
+    const removeComment = (postId, CommentId) => {
+        let post = posts[posts.id == postId]
+        post.comments = post.commets.filter(obj => obj.id !== CommentId)
+    }
+
     return {
         getPosts: getPosts,
         addPost: addPost,
-        removePost: removePost
+        removePost: removePost,
+        addComment: addComment,
+        removeComment: removeComment
     }
 
 
@@ -46,21 +63,13 @@ const Tweeter = function () {
 
 const tweeter = Tweeter()
 
-console.log(tweeter.getPosts())
-
 tweeter.addPost("This is my own post!")
 console.log(tweeter.getPosts())
 
 tweeter.removePost("p1")
 console.log(tweeter.getPosts())
 
+tweeter.addComment("Damn straight it is!", "p3")
+tweeter.addComment("Second the best!", "p2")
+console.log(tweeter.getPosts())
 
-let arr = [
-    { id: 15 },
-    { id: -1 },
-    { id: 0 },
-    { id: 3 }
-]
-
-arr = arr.filter(obj => obj.id !== 0)
-console.log(arr)
