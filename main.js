@@ -13,3 +13,8 @@ function deletePost(postId) {
     tweeter.removePost(postId)
     renderer.renderPosts(tweeter.getPosts())
 }
+
+function deleteComment(postId, commentId) {
+    tweeter.removeComment(postId, commentId)
+    renderer.renderPosts(tweeter.getPosts())
+}
