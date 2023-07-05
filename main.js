@@ -8,3 +8,8 @@ function post() {
     renderer.renderPosts(tweeter.getPosts())
     $("#input").val("")
 }
+
+function deletePost(postId) {
+    tweeter.removePost(postId)
+    renderer.renderPosts(tweeter.getPosts())
+}
