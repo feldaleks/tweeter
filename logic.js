@@ -1,5 +1,5 @@
 const Tweeter = function () {
-    let posts = [
+    let _posts = [
         {
             text: "First post!",
             id: "p1",
@@ -22,22 +22,22 @@ const Tweeter = function () {
     let postIdCounter = 2
     let commentIdCounter = 6
 
-    const getPosts = () => posts
+    const getPosts = () => _posts
 
     const addPost = (post) => {
         postIdCounter += 1
-        posts.push({
+        _posts.push({
             text: post,
             id: "p" + postIdCounter,
             comments: []
         }) 
     }
 
-    const removePost = (postId) => posts = posts.filter(obj => obj.id !== postId)
+    const removePost = (postId) => _posts = _posts.filter(obj => obj.id !== postId)
 
     const addComment = (comment, postId) => {
         commentIdCounter += 1
-        let post = posts.filter(obj => obj.id == postId)
+        let post = _posts.filter(obj => obj.id == postId)
         post[0].comments.push({
             id: "c" + commentIdCounter,
             text: comment
@@ -46,7 +46,7 @@ const Tweeter = function () {
     }
 
     const removeComment = (postId, CommentId) => {
-        let post = posts.filter(obj => obj.id == postId)
+        let post = _posts.filter(obj => obj.id == postId)
         post[0].comments = post[0].comments.filter(obj => obj.id !== CommentId)
     }
 
