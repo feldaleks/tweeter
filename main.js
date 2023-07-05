@@ -4,9 +4,12 @@ const renderer = Renderer()
 renderer.renderPosts(tweeter.getPosts())
 
 function post() {
-    tweeter.addPost($("#input").val())
-    renderer.renderPosts(tweeter.getPosts())
-    $("#input").val("")
+    let val = $("#input").val()
+    if (val != "") {
+        tweeter.addPost(val)
+        renderer.renderPosts(tweeter.getPosts())
+        $("#input").val("")
+    }
 }
 
 function deletePost(postId) {
@@ -18,3 +21,10 @@ function deleteComment(postId, commentId) {
     tweeter.removeComment(postId, commentId)
     renderer.renderPosts(tweeter.getPosts())
 }
+
+$('#post').on('mousedown', function() {
+    $(this).addClass('active-style');
+  }).on('mouseup', function() {
+    $(this).removeClass('active-style');
+  });
+  
