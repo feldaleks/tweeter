@@ -22,9 +22,24 @@ function deleteComment(postId, commentId) {
     renderer.renderPosts(tweeter.getPosts())
 }
 
+function addComment(postId) {
+    let value = $("body").find(`div[data-id=${postId}]`).find("input").val()
+    tweeter.addComment(value, postId)
+    renderer.renderPosts(tweeter.getPosts())
+}
+
 $('#post').on('mousedown', function() {
     $(this).addClass('active-style');
   }).on('mouseup', function() {
     $(this).removeClass('active-style');
   });
   
+// $("#posts").on("click",".btn-comment",function(){
+//     let value = $(this).closest("div").find("input").val()
+//     let postId = $(this).closest("div").data("id")
+//     if (value != "") {
+//         tweeter.addComment(value, postId)
+//         renderer.renderPosts(tweeter.getPosts())
+//         $(this).closest("div").find("input").val("")
+//     }
+// })
